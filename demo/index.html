@@ -19,6 +19,15 @@
         </div>
       </slider-item>
     </slider>
+    <br><br>
+    <slider>
+      <p style="line-height: 280px; font-size: 5rem; text-align: center;" v-if="!list.length">Loading...</p>
+      <slider-item v-for="(i, index) in list" :key="index" :on-click="test">
+        <div :style="i">
+          <p style="line-height: 280px; font-size: 5rem; text-align: center;">Page{{ index + 1 }}</p>
+        </div>
+      </slider-item>
+    </slider>
   </div>
 
   <script src="https://unpkg.com/vue@2.2.4/dist/vue.min.js"></script>
