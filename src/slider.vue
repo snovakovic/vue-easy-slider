@@ -159,6 +159,10 @@ export default {
     this.jump = debounce(this.jump, this.speed + 100)
   },
 
+  mounted () {
+    this.$on('$VueEasySlider:reRender', () => this.handleItemChange());
+  },
+
   beforeMount () {
     this.handleItemChange()
   },

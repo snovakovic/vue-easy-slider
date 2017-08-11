@@ -2,8 +2,7 @@ const webpack = require( 'webpack' )
 
 module.exports = {
   entry: {
-    index: './src/index.js',
-    mobile: './src/mobile/index.js'
+    index: './src/index.js'
   },
   output: {
     path: './dist/',
