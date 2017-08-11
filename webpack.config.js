@@ -1,10 +1,12 @@
 const webpack = require( 'webpack' )
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    index: './src/index.js'
+  },
   output: {
     path: './dist/',
-    filename: 'index.js',
+    filename: '[name].js',
     library: 'vue-easy-slider',
     libraryTarget: 'umd',
     umdNamedDefine: true
@@ -26,7 +28,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'style!css'
+        loader: 'style!less!css'
       }
     ]
   },

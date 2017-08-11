@@ -1,42 +1,50 @@
 ## Intro
 
-vue-easy-slider is a slider component of Vue 2.x（[go 1.x](https://github.com/shhdgit/vue-easy-slider/tree/master)）.
+vue-easy-slider is a slider component of Vue 2.x
 
 ## Demo
 
-[simple](https://jsfiddle.net/su9zv0w9/1/)
+[demo](https://jsfiddle.net/su9zv0w9/69/)
 
-[dynamic](https://jsfiddle.net/4nwvy4en/1/)
+## Install
 
-## Download
-
-Download components from ./dist
+```bash
+$ npm i -S vue-easy-slider
+```
 
 ## Usage
 
 Work on a Vue instance:
+
+```HTML
+<slider animation="fade">
+  <slider-item v-for="(i, index) in list" :key="index">
+    <div :style="i">
+      <p style="line-height: 280px; font-size: 5rem; text-align: center;">Page{{ index + 1 }}</p>
+    </div>
+  </slider-item>
+</slider>
+```
 
 ```JavaScript
 import { Slider, SliderItem } from 'vue-easy-slider'
 
 new Vue( {
   el: 'body',
+  data () {
+    return {
+      list: [
+        { backgroundColor: '#3f51b5', width: '100%', height: '100%' },
+        { backgroundColor: '#eee', width: '100%', height: '100%' },
+        { backgroundColor: '#f44336', width: '100%', height: '100%' },
+      ],
+    }
+  },
   components: {
     Slider,
     SliderItem
   }
 } )
-```
-
-```HTML
-<slider width="800px"
-        animation="fade"
-        :interval="1000"
-        :speed="1000">
-  <slider-item :style="{ backgroundColor: '#3f51b5' }"></slider-item>
-  <slider-item :style="{ backgroundColor: '#eee' }"></slider-item>
-  <slider-item :style="{ backgroundColor: '#f44336' }"></slider-item>
-</slider>
 ```
 
 ## Props
@@ -100,6 +108,62 @@ Slider：
       <td>String - { normal, fade }</td>
       <td>normal</td>
       <td>Change animation</td>
+    </tr>
+    <tr>
+      <td>init-index</td>
+      <td>Number</td>
+      <td>0</td>
+      <td>Index of the initially active slide</td>
+    </tr>
+  </tbody>
+</table>
+
+## Events
+
+Slider：
+
+<table>
+  <thead>
+  <tr>
+    <th>name</th>
+    <th>description</th>
+    <th>$event</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>changeSlide</td>
+      <td>Fires when the slide change</td>
+      <td>$event.index</td>
+    </tr>
+    <tr>
+      <td>next</td>
+      <td>Fires when the button for the next slide was pressed</td>
+      <td>$event.original, $event.next</td>
+    </tr>
+    <tr>
+      <td>previous</td>
+      <td>Fires when the button for the previous slide was pressed</td>
+      <td>$event.original, $event.next</td>
+    </tr>
+  </tbody>
+</table>
+
+SliderItem:
+
+<table>
+  <thead>
+  <tr>
+    <th>name</th>
+    <th>description</th>
+    <th>$event</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>onClick</td>
+      <td>Click event</td>
+      <td></td>
     </tr>
   </tbody>
 </table>
